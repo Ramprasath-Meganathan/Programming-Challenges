@@ -21,22 +21,22 @@ class Dialog(ABC):
     def factoryMethod(self):
         pass
 
-    def someoperation():
-        b=Button.factoryMethod()
-        return Button.click()
+    def someoperation(self)->str:
+        b=self.factoryMethod()
+        return f"{b.click()}"
 
 class WebDialog(Dialog):
 
     def factoryMethod(self) -> Button:
-        return "{Result of the ConcreteProduct1}"
+        return WebButton()
 
 class MobileDialog(Dialog):
 
     def factoryMethod(self)->Button:
-          return "{Result of the ConcreteProduct2}"
+          return MobileButton()
 
-def callingClient(dialog:Dialog):
-    print(dialog.someoperation())
+def callingClient(dialog:Dialog)-> None:
+    print(str(dialog.someoperation()))
 
 if __name__=="__main__":
     #calling concrete class 1
